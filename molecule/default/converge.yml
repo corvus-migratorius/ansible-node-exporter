@@ -2,4 +2,5 @@
 - name: Converge
   hosts: all
   roles:
-    - role: genlab.template
+    - role: genlab.node_exporter
+      node_exp_ver: "1.6.1"
