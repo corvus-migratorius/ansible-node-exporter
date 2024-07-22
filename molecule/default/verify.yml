@@ -3,9 +3,17 @@
   hosts: all
   gather_facts: false
   any_errors_fatal: true
-
   tasks:
-    - name: "Mock verification task"
-      changed_when: false
-      ansible.builtin.command:
-        cmd: "true"
+
+    - name: "Sanity check the node exporter"
+      retries: 5
+      delay: 1
+      ansible.builtin.uri:
+        url: "http://localhost:9100/metrics"
+        return_content: true
+      register: result
+
+    - name: Assert results
+      assert:
+        that:
+          - '"node_exporter_build_info" in result.content'
