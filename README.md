@@ -1,7 +1,7 @@
-template
+Role Name
 =========
 
-Template for Ansible role monorepos
+Deploy `prometheus/node_exporter` binary as a systemd unit.
 
 Requirements
 ------------
@@ -11,7 +11,7 @@ None
 Role Variables
 --------------
 
-None
+`node_exp_bin_path`: where to put the binary (default: `/usr/bin`).
 
 Dependencies
 ------------
@@ -23,7 +23,8 @@ Example Playbook
 
 ```yaml
 roles:
-    - role: genlab.template
+    - role: prom_node_exp
+      node_exp_ver: "1.6.1"
 ```
 
 License
