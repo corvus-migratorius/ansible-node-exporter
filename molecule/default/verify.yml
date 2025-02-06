@@ -13,4 +13,3 @@
       ansible.builtin.uri:
         url: "http://localhost:9100/metrics"
         return_content: true
-
